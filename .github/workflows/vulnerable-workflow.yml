@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: Echo user input (VULNERABLE)
         run: |
-          echo ${{ inputs.user_message }}
+          echo "${{ inputs.user_message }}"
