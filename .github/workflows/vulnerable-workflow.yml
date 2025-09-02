@@ -1,0 +1,18 @@
+name: Vulnerable Workflow - Direct Input Usage
+
+on:
+  workflow_dispatch:
+    inputs:
+      user_message:
+        description: "Message to echo"
+        required: true
+        default: "Hello World"
+        type: string
+
+jobs:
+  vulnerable-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo user input (VULNERABLE)
+        run: |
+          echo ${{ inputs.user_message }}

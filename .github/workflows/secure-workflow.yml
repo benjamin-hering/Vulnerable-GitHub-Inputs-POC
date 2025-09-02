@@ -1,0 +1,20 @@
+name: Secure Workflow - Environment Variable Usage
+
+on:
+  workflow_dispatch:
+    inputs:
+      user_message:
+        description: "Message to echo"
+        required: true
+        default: "Hello World"
+        type: string
+
+jobs:
+  secure-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo user input (SECURE)
+        env:
+          USER_MESSAGE: ${{ inputs.user_message }}
+        run: |
+          echo "$USER_MESSAGE"
